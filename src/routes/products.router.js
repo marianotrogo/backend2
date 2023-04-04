@@ -25,7 +25,7 @@ productsRouter.get("/", async(req,res)=>{
 productsRouter.get("/:pid", async (req,res)=>{
     let num = req.params.pid;
     const products = await manager.getProductById(num);
-    res.send({status: "ok", products});
+    res.send({products});
 });
 
 productsRouter.post("/", async(req,res)=>{
@@ -39,7 +39,7 @@ productsRouter.post("/", async(req,res)=>{
         code,
         stock
     );
-    res.send({status: "ok", newProd});
+    res.send({newProd});
 });
 
 productsRouter.put("/:pid", async(req,res)=>{
@@ -59,7 +59,7 @@ productsRouter.put("/:pid", async(req,res)=>{
 productsRouter.delete("/:pid", async(req,res)=>{
     let pid = req.params.pid;
     const deleteProduct = await manager.deleteProduct(pid);
-    res.send({status:"ok", deleteProduct});
+    res.send({deleteProduct});
 });
 
 export default productsRouter;
